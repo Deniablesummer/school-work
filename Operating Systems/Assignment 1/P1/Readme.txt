@@ -7,7 +7,7 @@ V00830984
 
 MAKE FILE
 ==============
-Makehttp://www.csl.mtu.edu/cs4411.ck/www/NOTES/process/fork/exec.html
+Make
 	Using make, will compile all the necessary files, producing an executable called SSI
 Make clean
 	Using make clean, will remove all executable files created from the make command, leaving the source code.
@@ -55,7 +55,7 @@ The following is a list of all outside code snippets/examples used to help creat
 	*Using fork and execvp()
 	* http://www.csl.mtu.edu/cs4411.ck/www/NOTES/process/fork/exec.html
 
-	parse() was not written by me, and has not been modified from it's orginal sourse located below:
+	parse() was not written by me, and has not been modified from it's orginal source located below:
 		http://www.csl.mtu.edu/cs4411.ck/www/NOTES/process/fork/exec.html
 
 END OF README

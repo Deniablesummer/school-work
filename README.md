@@ -5,3 +5,5 @@ This repository does not contain all work that has been written for courses, and
 that could be located and accessed at the time of creation and which has not be explicitely prohibited from distribution by professors of those classes.
 
 This is repository is NOT meant for the use of cheating by future students. Be warned, I take no reponsibility for your actions if you copy my work.
+
+[SENG 468](https://github.com/Deniablesummer/seng468-spring2019)

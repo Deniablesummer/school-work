@@ -31,6 +31,12 @@ This is repository is NOT meant for the use of cheating by future students. Be w
 [CSC 370 - Database Systems](https://github.com/Deniablesummer/school-work/tree/master/Database%20Systems)
 
 ## Winter Session 2018-2019
-[SENG 468 - Software Systems Scalability](https://github.com/Deniablesummer/seng468-spring2019) (NOT CURRENTLY PUBLIC)
+[SENG 468 - Software Systems Scalability](https://github.com/Deniablesummer/school-work/tree/master/Software%20Systems%20Scalability) 
 
-[SENG 480D - Information Visualization](https://github.com/chrisjcook/uvic-infovis) (NOT CURRENTLY PUBLIC)
+## Summer Session 2019
+[SENG 440 - Embedded Systems]() Not Currently Uploaded
+
+## Winter Session 2019-2020
+[SENG 321 - Requirements Engineering](https://github.com/Deniablesummer/school-work/tree/master/Requirements%20Engineering)
+
+[SENG 360 - Security Engineering](https://github.com/Deniablesummer/school-work/tree/master/Security%20Engineering/Cryptographic%20Tools)

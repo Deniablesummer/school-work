@@ -1,0 +1,32 @@
+nav {
+    border-bottom: solid;
+    border-width: 1px;
+    padding-bottom: 10px;
+    width: 100%;
+    overflow: hidden;
+}
+
+nav .signInButton, nav .signUpButton, nav .homeButton {
+    color: black;
+    text-decoration: none;
+}
+
+nav .signInButton, nav .signUpButton {
+    border: solid;
+    border-width: 1px;
+    padding: 5px;
+    float: right;
+    margin-right: 5px;
+}
+
+nav .signInButton:hover, nav .signUpButton:hover{
+    color: white;
+    background-color: black;
+}
+
+nav .homeButton {
+    border-right: solid;
+    border-width: 1px;
+    padding-right: 5px;
+    font-size: 30px;
+}

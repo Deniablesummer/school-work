@@ -1,0 +1,102 @@
+version: '3.3'
+
+services:
+  db_user:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: day_trading_inc
+      MYSQL_ROOT_PASSWORD: seng468
+      MYSQL_USER: seng468
+      MYSQL_PASSWORD: seng468
+    #This will exectue table creations script
+    volumes:
+      - ./database/user_data:/docker-entrypoint-initdb.d
+    ports:
+      - "33060:3306"
+
+  mock-quote-server:
+    build: ./mockquoteserver
+    volumes:
+      - ./mockquoteserver/mockQuoteServer.py:/user/local/bin
+    tty: true #Show shell
+    ports:
+      - "4441:4441"
+    stdin_open: true #interactive shell
+
+  transaction-server:
+    build: ./transactionserver #Will look for Dockerfile to run in transactionserver directory
+    volumes:
+      - ./transactionserver/core.py:/user/local/bin #Any changes made to core.py on the host machine will automatically reflect in the container  
+    tty: true #Show shell
+    ports:
+      - "8080"
+    stdin_open: true #interactive shell
+    #depends_on
+      #- db_user
+      #- log-server
+      #- mock-quote-server
+      #- stock-cache
+
+  client:
+    build: ./client
+    volumes:
+      - ./client/testClient.py:/user/local/bin #Any changes made to core.py on the host machine will automatically reflect in the container
+    tty: true
+    stdin_open: true #interactive shell
+    ports:
+      - "9080-9150:9080-9150"
+
+  haproxy:
+    build: ./haproxy
+    volumes:
+      - ./haproxy/haproxy.cfg:/user/local/bin
+    ports: 
+      - "8090:8090" #host port on left and container port on the right
+    tty: true
+    stdin_open: true
+    
+  stock-cache:
+    build: ./stockcache
+    volumes:
+      - ./stockcache/stock_cache.py:/user/local/bin #Any changes made to core.py on the host machine will automatically reflect in the container  
+    tty: true #Show shell
+    ports:
+      - "8075:8075"
+    stdin_open: true #interactive shell
+
+  log-server:
+    build: ./log_server
+    volumes:
+      - ./log_server/log_server.py:/user/local/bin #Any changes made to core.py on the host machine will automatically reflect in the container  
+    tty: true #Show shell
+    ports:
+      - "8030:8030"
+    stdin_open: true #interactive shell
+    
+  trigger-server:
+    build: ./trigger_server
+    volumes:
+      - ./trigger_server/trigger_server.py:/user/local/bin #Any changes made to core.py on the host machine will automatically reflect in the container  
+    tty: true #Show shell
+    ports:
+      - "7444:7444"
+    stdin_open: true #interactive shel
+    
+  #web-server-nginx:
+  #  build: ./webserver-nginx
+  #  ports:
+  #    -  "8080:80" 
+
+  front-end:
+    build: ./front-end
+    tty: true #Show shell
+    stdin_open: true #interactive shell
+    ports:
+      - "8091:8080"
+
+  web-server-tcp-server:
+    build: ./webserver-tcp-server
+    ports:
+      -  "8081:9081"
+      -  "8082:9082"

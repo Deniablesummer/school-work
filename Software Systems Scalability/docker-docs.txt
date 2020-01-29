@@ -1,0 +1,36 @@
+﻿First try at Docker setup for transactionServer and db
+------------------------------------
+GETTING STARTED
+1. Install docker version 18.09.1
+   1. See OFFICIAL WAY here → https://askubuntu.com/a/938701
+1. Install docker compose
+   1. pip install docker-compose
+1. Open a terminal and CD to project root directory
+2. Run ‘sudo docker-compose up -d --build db’
+3. This will pull the mysql image from docker, create our database container on top of it, and start the database container
+4. Wait for the command to finish, then wait about 10 seconds. The 10 second wait is to make sure the DB container is ready for connections.
+5. Run ‘sudo docker-compose up --build --scale transaction-server=1 transaction-server’. This will pull the python image from docker, and build two containers on top of it. One container is for the mockQuoteServer, and the other is for the transactionServer. Both containers should be running once this command is finished. ‘--scale transaction-server=1’ specifies how many transaction-server containers we want to start. Feel free to try spinning up more than one container.
+6. This command will also re-build the db container (redundant) 
+7. Open another terminal, CD to workload tester directory
+8. Make sure that workloadtester.py will send data to the IP of the transactionServer container
+9. Run ‘python workloadtester.py 1_user_workloadtester.txt’
+10. You should see the transactionServer container printing output
+11. Run ‘sudo docker exec -it  <DB CONTAINER_ID> /bin/sh’. To find the db container’s id, type ‘sudo docker ps -a’
+12. You are now inside the shell of the db container
+13. Log into mysql
+14. ‘mysql -u seng468 -p’
+15. If everything worked correctly, you should see a populated day_trading_inc database
+
+RUNNING WEB-SERVER
+1. Open a terminal and CD to project root directory
+2. run sudo docker-compose up --build --scale web-server=1 web-server
+3. The IP and port number will be printed in the terminal. Navigate to that address in your web browser to see the web server in action
+
+In the future, it would be good if we are able to just run the command ‘sudo docker-compose up –build –scale transaction-server=1 transaction-server’ and have docker-compose wait for the db container to be ready before starting the transactionServer container. This way, we won’t have to run the command to start the db container separately and then wait 10 seconds before starting transactionServer container. Currently this command will make sure the db container is created but will not wait for it to be ready, and will then create the mockQuoteServer container, and then the transactionServer container. If the db container is not ready and the transactionServer container has started, we will get a sql connection error in the transactionServer container.
+
+Useful docker commands:
+List all containers: docker ps -a
+List all images: docker images
+Stop and remove all containers: docker-compose down
+View container print statements: docker-compose logs
+Attach to container shell: docker exec -it  <DB CONTAINER_ID> /bin/sh

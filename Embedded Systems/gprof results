@@ -1,0 +1,39 @@
+Using vic.ppm
+
+Run on Host machine:
+====================
+Version1:
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ns/call  ns/call  name    
+ 54.60      0.06     0.06                             main
+ 27.30      0.09     0.03  2781184    10.80    10.80  convertRGBtoYCC
+  9.10      0.10     0.01  2781184     3.60     3.60  convertYCCtoRGB
+  9.10      0.11     0.01  1390592     7.20     7.20  avg
+Version2:
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ns/call  ns/call  name    
+ 37.54      0.03     0.03                             main
+ 25.02      0.05     0.02  2781184     7.20     7.20  convertRGBtoYCC
+ 25.02      0.07     0.02  2781184     3.60     3.60  convertYCCtoRGB
+ 12.51      0.08     0.01  1390592     7.20     7.20  avg
+
+Run on VM machine:
+====================
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ns/call  ns/call  name    
+ 60.31      1.91     1.91                             main
+ 33.15      2.96     1.05  2781184   377.89   377.89  convertRGBtoYCC
+  5.37      3.13     0.17  2781184    61.18    61.18  convertYCCtoRGB
+  1.26      3.17     0.04  1390592    28.79    28.79  avg
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ns/call  ns/call  name    
+ 71.01      1.44     1.44                             main
+ 17.26      1.79     0.35  2781184   125.97   125.97  convertRGBtoYCC
+ 10.36      2.00     0.21  2781184    61.18    61.18  convertYCCtoRGB
+  1.48      2.03     0.03  1390592    21.60    21.60  avg

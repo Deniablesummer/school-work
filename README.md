@@ -34,7 +34,7 @@ This is repository is NOT meant for the use of cheating by future students. Be w
 [SENG 468 - Software Systems Scalability](https://github.com/Deniablesummer/school-work/tree/master/Software%20Systems%20Scalability) 
 
 ## Summer Session 2019
-[SENG 440 - Embedded Systems]() Not Currently Uploaded
+[SENG 440 - Embedded Systems](https://github.com/Deniablesummer/school-work/tree/master/Embedded%20Systems)
 
 ## Winter Session 2019-2020
 [SENG 321 - Requirements Engineering](https://github.com/Deniablesummer/school-work/tree/master/Requirements%20Engineering)
